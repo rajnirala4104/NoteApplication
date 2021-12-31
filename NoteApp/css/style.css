@@ -1,0 +1,26 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    /* background-color: black; */
+}
+#containor{
+    padding: 10px 220px 33px 209px;
+}
+.note{
+    cursor: pointer;
+    display: flex;
+    border: 2px solid  black;
+    margin: 8px 0px 15px 63px;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    border-radius: 17px;
+    padding: 14px;
+}
+#shownoteshere{
+    display: flex;
+    flex-direction: row;
+    align-content: space-between;
+    flex-wrap: wrap;
+    justify-content: center;
+}
