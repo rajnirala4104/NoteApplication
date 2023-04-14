@@ -1,0 +1,26 @@
+{
+  "name": "noteapplication",
+  "version": "1.0.0",
+  "description": "Here you can write your important notes and you can do delete your notes.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rajnirala4104/NoteApplication.git"
+  },
+  "author": "Raj Nirala",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rajnirala4104/NoteApplication/issues"
+  },
+  "homepage": "https://github.com/rajnirala4104/NoteApplication#readme",
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "mongodb": "^5.2.0",
+    "nodemon": "^2.0.22"
+  }
+}
