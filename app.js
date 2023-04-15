@@ -12,4 +12,9 @@ app.get('/', (req,res)=>{
     res.status(200).render('index')
 })
 
+app.post('/',(req,res)=>{
+    console.log(req.body.userNote);
+    res.status(200).render('index')
+})
+
 module.exports = app;

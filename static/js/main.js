@@ -43,9 +43,9 @@ function showNotes() {
      </div>
      <div class="btns">
         <button type="button" id="${index}" onclick="delnote(this.id)"
-        class="btn  btn-dark">Delete</button>
-        <button type="button" id="${index}" onclick="delnote(this.id)"
-        class="btn  btn-primary">Edit</button>
+        class="btn  btn-danger">Delete</button>
+        <button type="button" id="editNote"
+        class="btn  btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Edit</button>
     </div>
      </div>
      </div>`;
@@ -56,24 +56,23 @@ function showNotes() {
 }
 
 //add note function
-function addnote(note, index) {
+function addnote(noteText, index) {
     let showhere = document.getElementById("shownoteshere");
     // let noteCard = document.getElementById("note");
     showhere.innerHTML += `<div class="card my-3 mx-3 note" style="width: 18rem;">
     <div class="card-body">
- <h5 id='noteTitle' class="card-title">Note ${index + 1}</h5>
+ <h5 id='noteTitle' class="card-title">Note ${index}</h5>
  <p class="card-text">${noteText}</p>
  </div>
  <div class="btns">
     <button type="button" id="${index}" onclick="delnote(this.id)"
-    class="btn  btn-dark">Delete</button>
-    <button type="button" id="${index}" onclick="delnote(this.id)"
-    class="btn  btn-primary">Edit</button>
+    class="btn  btn-danger">Delete</button>
+    <button type="button" id="editNote"     
+    class="btn  btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Edit</button>
 </div>
  </div>
  </div>`;
     };
-    
     
     //note delete function
     function delnote(index){
