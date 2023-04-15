@@ -41,8 +41,12 @@ function showNotes() {
      <h5 id='noteTitle' class="card-title">Note ${index + 1}</h5>
      <p class="card-text">${noteText}</p>
      </div>
-     <button type="button" id="${index}" onclick="delnote(this.id)"
-     class="btn  btn-dark">Delete</button>
+     <div class="btns">
+        <button type="button" id="${index}" onclick="delnote(this.id)"
+        class="btn  btn-dark">Delete</button>
+        <button type="button" id="${index}" onclick="delnote(this.id)"
+        class="btn  btn-primary">Edit</button>
+    </div>
      </div>
      </div>`;
     });
@@ -57,13 +61,17 @@ function addnote(note, index) {
     // let noteCard = document.getElementById("note");
     showhere.innerHTML += `<div class="card my-3 mx-3 note" style="width: 18rem;">
     <div class="card-body">
-    <h5 id='noteTitle' class="card-title">Note ${index}</h5>
-    <p class="card-text">${note}</p>
-    </div>
+ <h5 id='noteTitle' class="card-title">Note ${index + 1}</h5>
+ <p class="card-text">${noteText}</p>
+ </div>
+ <div class="btns">
     <button type="button" id="${index}" onclick="delnote(this.id)"
-     class="btn  btn-dark">Delete</button>
-     </div>
-     </div>`;
+    class="btn  btn-dark">Delete</button>
+    <button type="button" id="${index}" onclick="delnote(this.id)"
+    class="btn  btn-primary">Edit</button>
+</div>
+ </div>
+ </div>`;
     };
     
     
@@ -111,3 +119,4 @@ if (showhere.innerHTML == []) {
 } else {
     showNotes();
 }
+

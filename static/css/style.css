@@ -24,3 +24,15 @@
     flex-wrap: wrap;
     justify-content: center;
 }
+
+.btns{
+    display: flex;
+    justify-content: space-around;
+    align-items: left;
+    /* border: 2px solid red; */
+    padding: 5px 0px;
+}
+.btns button{
+    padding: 4px 30px;
+}
+
