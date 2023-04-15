@@ -1,9 +1,9 @@
 showNotes();
 let containor = document.getElementById("containor");
 let addbtn = document.getElementById("addBtn");
+let saveChanges = document.getElementById('saveChanges')
 
-
-addbtn.addEventListener("click", function (e) {
+addbtn.addEventListener("click", function() {
     let text = document.getElementById("addText");
     let notes = localStorage.getItem("notes");
     if (notes == null) {
@@ -19,16 +19,34 @@ addbtn.addEventListener("click", function (e) {
     // text.value = "";
     // console.log(notesList);
 });
+saveChanges.addEventListener("click", function() {
+    let text = document.getElementById("EditText");
+    let notes = localStorage.getItem("notes");
+    if (notes == null) {
+        notesList = [];
+    }
+    else {
+        notesList = JSON.parse(notes)
+    }
+    notesList.push(text.value);
+    addnote(text.value, notesList.length);
+    // showNotes()
+    localStorage.setItem("notes", JSON.stringify(notesList));
+    // text.value = "";
+    // console.log(notesList);
+
+
+    window.location.reload()
+});
 
 
 //-------------Edit Note-----------
-const editYourNote = (indexOfYourNoteWhichYouWantToEdit)=>{
+const editYourNote = (indexOfYourNoteWhichYouWantToEdit) => {
     const notesArr = JSON.parse(localStorage.getItem('notes'))
     console.log(notesArr[indexOfYourNoteWhichYouWantToEdit])
     let editTextArea = document.getElementById('EditText')
     editTextArea.innerText = notesArr[indexOfYourNoteWhichYouWantToEdit]
 }
-
 
 //-------------show note------------------
 function showNotes() {
@@ -43,23 +61,21 @@ function showNotes() {
     // console.log(notesList);
     let card = "";
     notesList.forEach((noteText, index) => {
-        card += `<div class="card my-3 mx-3 note" style="width: 18rem;">
+        card += `<div class="card note">
+        <div class="card-header"><h5 class="card-title">Note ${index + 1}</h5><span>Time</span></div>
         <div class="card-body">
-     <h5 id='noteTitle' class="card-title">Note ${index + 1}</h5>
-     <p class="card-text">${noteText}</p>
-     </div>
-     <div class="btns">
-        <button type="button" id="${index}" onclick="delnote(this.id)"
-        class="btn  btn-danger">Delete</button>
-        <button type="button" id="editNote"
-        class="btn  btn-primary" onclick='editYourNote(${index})' data-toggle="modal" data-target="#exampleModalCenter">Edit</button>
-    </div>
-     </div>
-     </div>`;
+          <p class="card-text">${noteText}</p>
+          <div class="btns">
+                <button type="button" id="${index}" onclick="delnote(this.id)"
+                    class="btn  btn-danger">Delete</button>
+                <button type="button" id="editNote" class="btn  btn-primary" onclick="editYourNote(${index})"
+                    data-toggle="modal" data-target="#exampleModalCenter">Edit</button>
+            </div>
+        </div>
+        </div>`;
     });
     let showhere = document.getElementById("shownoteshere");
     showhere.innerHTML = card;
-
 }
 
 
@@ -67,19 +83,20 @@ function showNotes() {
 function addnote(noteText, index) {
     let showhere = document.getElementById("shownoteshere");
     // let noteCard = document.getElementById("note");
-    showhere.innerHTML += `<div class="card my-3 mx-3 note" style="width: 18rem;">
+    showhere.innerHTML += `<div class="card">
+    <div class="card-header">Time</div>
     <div class="card-body">
- <h5 id='noteTitle' class="card-title">Note ${index}</h5>
- <p class="card-text">${noteText}</p>
- </div>
- <div class="btns">
-    <button type="button" id="${index}" onclick="delnote(this.id)"
-    class="btn  btn-danger">Delete</button>
-    <button type="button" id="editNote"     
-    class="btn  btn-primary" onclick="editYourNote(${index})" data-toggle="modal" data-target="#exampleModalCenter">Edit</button>
-</div>
- </div>
- </div>`;
+      <h5 class="card-title">Note ${index + 1}</h5>
+      <p class="card-text">${noteText}</p>
+      <div class="btns">
+            <button type="button" id="${index}" onclick="delnote(this.id)"
+                class="btn  btn-danger">Delete</button>
+            <button type="button" id="editNote" class="btn  btn-primary" onclick="editYourNote(${index})"
+                data-toggle="modal" data-target="#exampleModalCenter">Edit</button>
+        </div>
+    </div>
+    </div>`;
+
 };
 
 

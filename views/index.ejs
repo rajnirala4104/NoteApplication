@@ -64,7 +64,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-primary" id="saveChanges" data-dismiss="modal">Save changes</button>
                     </div>
                 </div>
             </div>
@@ -76,20 +76,23 @@
 
 
     <div id="containor">
-        <form action="/" method="post">
+        <form action="/" method="post" id="takingNotesForm">
             <div class="form-group">
                 <label for="addText">
                     <h2>Write Note</h2>
                 </label>
-                <textarea id="addText" name="userNote" class="form-control" placeholder="Write something here..." rows="6"></textarea>
+                <textarea id="addText" name="userNote" class="form-control" placeholder="Write something here..."
+                    rows="6"></textarea>
             </div>
             <button type="submit" id="addBtn" onclick="showNotes()" class="btn btn-dark">Add Note</button>
         </form>
         <hr>
-        <h2>Your Notes</h2>
+        <h2 class="notesContainerHeading">Your Notes</h2>
         <hr>
         <div id="shownoteshere" class="row container-fluid my-2 mx-2">
+            
         </div>
+    </div>
 
     </div>
     </div>
