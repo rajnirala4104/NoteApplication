@@ -13,8 +13,8 @@ app.get('/', (req,res)=>{
 })
 
 app.post('/',(req,res)=>{
-    console.log(req.body.userNote);
     res.status(200).render('index')
+    console.log(req.body.userNote);
 })
 
 module.exports = app;

@@ -1,9 +1,6 @@
-console.log("Hello guys i'm  today we gonna make a NOTE APP by RAJ NIRALA.");
 showNotes();
 let containor = document.getElementById("containor");
 let addbtn = document.getElementById("addBtn");
-// let delbtn = document.getElementsByClassName("delBtn");
-
 
 
 addbtn.addEventListener("click", function (e) {
@@ -19,11 +16,21 @@ addbtn.addEventListener("click", function (e) {
     addnote(text.value, notesList.length);
     // showNotes()
     localStorage.setItem("notes", JSON.stringify(notesList));
-    text.value = "";
+    // text.value = "";
     // console.log(notesList);
 });
 
-//show note function
+
+//-------------Edit Note-----------
+const editYourNote = (indexOfYourNoteWhichYouWantToEdit)=>{
+    const notesArr = JSON.parse(localStorage.getItem('notes'))
+    console.log(notesArr[indexOfYourNoteWhichYouWantToEdit])
+    let editTextArea = document.getElementById('EditText')
+    editTextArea.innerText = notesArr[indexOfYourNoteWhichYouWantToEdit]
+}
+
+
+//-------------show note------------------
 function showNotes() {
     // console.log("hello guys i'm raj nirala");
     let notes = localStorage.getItem("notes");
@@ -45,17 +52,18 @@ function showNotes() {
         <button type="button" id="${index}" onclick="delnote(this.id)"
         class="btn  btn-danger">Delete</button>
         <button type="button" id="editNote"
-        class="btn  btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Edit</button>
+        class="btn  btn-primary" onclick='editYourNote(${index})' data-toggle="modal" data-target="#exampleModalCenter">Edit</button>
     </div>
      </div>
      </div>`;
     });
     let showhere = document.getElementById("shownoteshere");
     showhere.innerHTML = card;
-    
+
 }
 
-//add note function
+
+//------------------add note----------------
 function addnote(noteText, index) {
     let showhere = document.getElementById("shownoteshere");
     // let noteCard = document.getElementById("note");
@@ -68,17 +76,19 @@ function addnote(noteText, index) {
     <button type="button" id="${index}" onclick="delnote(this.id)"
     class="btn  btn-danger">Delete</button>
     <button type="button" id="editNote"     
-    class="btn  btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Edit</button>
+    class="btn  btn-primary" onclick="editYourNote(${index})" data-toggle="modal" data-target="#exampleModalCenter">Edit</button>
 </div>
  </div>
  </div>`;
-    };
-    
-    //note delete function
-    function delnote(index){
-        let notes = localStorage.getItem("notes");
-        if (notes == null) {
-            notesList = [];
+};
+
+
+//----------------note delete -----------------
+function delnote(index) {
+
+    let notes = localStorage.getItem("notes");
+    if (notes == null) {
+        notesList = [];
     }
     else {
         notesList = JSON.parse(notes);
@@ -86,23 +96,23 @@ function addnote(noteText, index) {
     notesList.splice(index, 1);
     localStorage.setItem("notes", JSON.stringify(notesList));
     showNotes();
-    
+
 }
 
 
-//search bar
+//-----------search bar----------
 let search = document.getElementById("searchtext");
 search.addEventListener("input", function () {
     let searchValue = search.value;
     let searchValueCapi = searchValue.toUpperCase()
     // console.log(searchValueCapi);
     let notes = document.getElementsByClassName("note");
-    Array.from(notes).forEach(function (element){
+    Array.from(notes).forEach(function (element) {
         // console.log(element);
         let card = element.getElementsByTagName("p")[0].innerText;
         if (card.includes(searchValue)) {
             element.style.display = "block";
-        }else if(card.includes(searchValueCapi)) {
+        } else if (card.includes(searchValueCapi)) {
             element.style.display = "block";
         }
         else {
@@ -110,6 +120,7 @@ search.addEventListener("input", function () {
         }
     });
 });
+
 
 //during null div
 let showhere = document.getElementById("shownoteshere");

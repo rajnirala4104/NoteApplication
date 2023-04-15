@@ -57,10 +57,7 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="exampleFormControlTextarea1">
-                                <h2>Write Note</h2>
-                            </label>
-                            <textarea id="EditText" name="Note" class="form-control"
+                            <textarea id="EditText" name="userNote" class="form-control"
                                 placeholder="Write something here..." id="exampleFormControlTextarea1"
                                 rows="6"></textarea>
                         </div>
@@ -79,13 +76,12 @@
 
 
     <div id="containor">
-        <form action="/" , method="post">
+        <form action="/" method="post">
             <div class="form-group">
-                <label for="exampleFormControlTextarea1">
+                <label for="addText">
                     <h2>Write Note</h2>
                 </label>
-                <textarea id="addText" name="userNote" class="form-control" placeholder="Write something here..."
-                    id="exampleFormControlTextarea1" rows="6"></textarea>
+                <textarea id="addText" name="userNote" class="form-control" placeholder="Write something here..." rows="6"></textarea>
             </div>
             <button type="submit" id="addBtn" onclick="showNotes()" class="btn btn-dark">Add Note</button>
         </form>
@@ -95,17 +91,16 @@
         <div id="shownoteshere" class="row container-fluid my-2 mx-2">
         </div>
 
-
-
-
-
-
     </div>
     </div>
 
-    <!-- Optional JavaScript; choose one of the two! -->
 
-    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+
+
+
+
+
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
