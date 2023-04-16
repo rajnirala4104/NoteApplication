@@ -2,19 +2,19 @@ const { MongoClient } = require('mongodb')
 
 
 //---------DataBase has connected-----
+var uri = "mongodb+srv://rajmongo:rajmongo@cluster0.2yskbyq.mongodb.net/?retryWrites=true&w=majority"
+var client = new MongoClient(uri)
 async function main() {
-    const uri = "mongodb+srv://rajmongo:rajmongo@cluster0.2yskbyq.mongodb.net/?retryWrites=true&w=majority"
-    const client = new MongoClient(uri)
-
     try {
         await client.connect()
-        console.log("dataBase connected successfully")
+        console.log("database connected successfully")
     } catch (e) {
         console.log("Oops!!! something went wrong... try again to connect the database");
         console.error(e)
-    } finally {
-        await client.close()
-    }
+    } 
+    // finally {
+    //     await client.close()
+    // }
 }
 
 
@@ -22,7 +22,7 @@ async function main() {
 async function showingAllTheDatabases(client) {
     const dbs = await client.db().admin().listDatabases();
     dbs.databases.forEach(db => {
-        console.log(`- ${db.name}`)
+        return `- ${db.name}`
     });
 }
 
@@ -30,9 +30,9 @@ async function showingAllTheDatabases(client) {
 async function readDataFromTheDataBase(client, data){
     const dataFromDB = await client.db('useNotes').collection('note').findOne(data)
     if(dataFromDB){
-        console.log(dataFromDB)
+        return dataFromDB
     }else{
-        console.error("Oops!! something went wrong...")
+        return "Oops!! something went wrong..."
     }
 }
 
@@ -40,9 +40,9 @@ async function readDataFromTheDataBase(client, data){
 async function insertDataInMyDatabase(client, data){
     const result = await client.db('useNotes').collection('note').insertOne(data)
     if(result){
-        console.log(`This Data ${result}\nhas inserted i your DataBase`)
+        return `This Data ${result}\nhas inserted i your DataBase`
     }else{
-        console.log("Oops!!! i'm strugling to insert your data, wait or try again")
+        return "Oops!!! i'm strugling to insert your data, wait or try again"
     }
 }
 
@@ -51,7 +51,8 @@ const dataBaseOperations = {
     main,
     insertDataInMyDatabase,
     readDataFromTheDataBase,
-    showingAllTheDatabases
+    showingAllTheDatabases,
+    client,
 }
 
 module.exports = dataBaseOperations
