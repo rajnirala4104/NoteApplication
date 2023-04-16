@@ -1,8 +1,9 @@
 const express = require('express')
 const path = require('path')
+const {main, insertDataInMyDatabase, readDataFromTheDataBase, showingAllTheDatabases} = require('./database/db')
 // const mainJs = require('./static/js/main')
 const app = express()
-
+// main()
 app.use(express.urlencoded({ extended: false }));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
