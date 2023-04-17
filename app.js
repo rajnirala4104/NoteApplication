@@ -18,7 +18,7 @@ app.post('/',(req,res)=>{
     console.log(req.body.userNote);
     // const showingDBs = async ()=> console.log(await insertDataInMyDatabase(client, {note: req.body.userNote}))
     insertDataInMyDatabase(client, {note: req.body.userNote}).then((result)=>{
-        console.log(result);
+        console.log(`data : "${result}"`);
     }, (err)=>{
         console.log(err)
     })

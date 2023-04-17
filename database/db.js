@@ -2,8 +2,8 @@ const { MongoClient } = require('mongodb')
 
 
 //---------DataBase has connected-----
-var uri = "mongodb+srv://rajmongo:rajmongo@cluster0.2yskbyq.mongodb.net/?retryWrites=true&w=majority"
-var client = new MongoClient(uri)
+const uri = "mongodb+srv://rajmongo:rajmongo@cluster0.2yskbyq.mongodb.net/?retryWrites=true&w=majority"
+const client = new MongoClient(uri)
 async function main() {
     try {
         await client.connect()
@@ -28,7 +28,7 @@ async function showingAllTheDatabases(client) {
 
 //----------read data from our database--------
 async function readDataFromTheDataBase(client, data){
-    const dataFromDB = await client.db('useNotes').collection('note').findOne(data)
+    const dataFromDB = await client.db('userNotes').collection('note').findOne(data)
     if(dataFromDB){
         return dataFromDB
     }else{
@@ -38,9 +38,9 @@ async function readDataFromTheDataBase(client, data){
 
 //--------inserting some data--------
 async function insertDataInMyDatabase(client, data){
-    const result = await client.db('useNotes').collection('note').insertOne(data)
+    const result = await client.db('userNotes').collection('note').insertOne(data)
     if(result){
-        return `This Data ${result}\nhas inserted i your DataBase`
+        return `Your Data has inserted i your DataBase and its id is ${result.listingId}`
     }else{
         return "Oops!!! i'm strugling to insert your data, wait or try again"
     }
