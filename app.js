@@ -13,12 +13,14 @@ app.get('/', (req,res)=>{
     res.status(200).render('index')
 })
 
+readDataFromTheDataBase(client, {note: ""})
+
+
 app.post('/',(req,res)=>{
     res.status(200).render('index');
     console.log(req.body.userNote);
-    // const showingDBs = async ()=> console.log(await insertDataInMyDatabase(client, {note: req.body.userNote}))
     insertDataInMyDatabase(client, {note: req.body.userNote}).then((result)=>{
-        console.log(`data : "${result}"`);
+        // console.log(`data : "${result}"`);
     }, (err)=>{
         console.log(err)
     })

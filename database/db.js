@@ -40,7 +40,7 @@ async function readDataFromTheDataBase(client, data){
 async function insertDataInMyDatabase(client, data){
     const result = await client.db('userNotes').collection('note').insertOne(data)
     if(result){
-        return `Your Data has inserted i your DataBase and its id is ${result.listingId}`
+        return `Your Data has inserted i your DataBase.`
     }else{
         return "Oops!!! i'm strugling to insert your data, wait or try again"
     }
