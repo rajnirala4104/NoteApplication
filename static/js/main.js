@@ -1,5 +1,5 @@
 showNotes();
-let containor = document.getElementById("containor");
+
 let addbtn = document.getElementById("addBtn");
 let saveChanges = document.getElementById('saveChanges')
 
