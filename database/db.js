@@ -8,14 +8,13 @@ async function main() {
     try {
         await client.connect()
         console.log("database connected successfully")
-        console.log(await readDataFromTheDataBase(client))
     } catch (e) {
         console.log("Oops!!! something went wrong... try again to connect the database");
         console.error(e)
     } 
-    finally {
-        await client.close()
-    }
+    // finally {
+    //     await client.close()
+    // }
 }
 
 
@@ -61,7 +60,7 @@ async function DeleteNote(client, data){
     }
 }
 
-main()
+// main()
 
 
 const dataBaseOperations = {
