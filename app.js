@@ -15,6 +15,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(__dirname + '/static'));
 
+
 //first route
 app.get('/', (req,res)=>{
     res.status(200).render('layout')
@@ -29,7 +30,9 @@ app.post('/',(req,res)=>{
     })
 })
 
-const readAllTheDataFromTheDataBase = async ()=>{
+
+//--------function to get all the data from the dsatabase
+const readAllTheDataFromTheDataBase = async ()=> {
     const dataArr = await readDataFromTheDataBase(client)
     for (const dataObject of dataArr) {
         console.log(dataObject.note);

@@ -3,7 +3,7 @@ showNotes();
 let addbtn = document.getElementById("addBtn");
 let saveChanges = document.getElementById('saveChanges')
 
-addbtn.addEventListener("click", function() {
+addbtn.addEventListener("click", function () {
     let text = document.getElementById("addText");
     let notes = localStorage.getItem("notes");
     if (notes == null) {
@@ -14,12 +14,10 @@ addbtn.addEventListener("click", function() {
     }
     notesList.push(text.value);
     addnote(text.value, notesList.length);
-    // showNotes()
     localStorage.setItem("notes", JSON.stringify(notesList));
-    // text.value = "";
-    // console.log(notesList);
-});
-saveChanges.addEventListener("click", function() {
+})
+
+saveChanges.addEventListener("click", function () {
     let text = document.getElementById("EditText");
     let notes = localStorage.getItem("notes");
     if (notes == null) {
@@ -30,14 +28,9 @@ saveChanges.addEventListener("click", function() {
     }
     notesList.push(text.value);
     addnote(text.value, notesList.length);
-    // showNotes()
     localStorage.setItem("notes", JSON.stringify(notesList));
-    // text.value = "";
-    // console.log(notesList);
-
-
-    window.location.reload()
-});
+    window.location.reload();
+})
 
 
 //-------------Edit Note-----------
@@ -58,14 +51,14 @@ function showNotes() {
     else {
         notesList = JSON.parse(notes)
     }
-    // console.log(notesList);
+
     let card = "";
     notesList.forEach((noteText, index) => {
         card += `<div class="card note">
         <div class="card-header"><h5 class="card-title">Note ${index + 1}</h5><span>Time</span></div>
         <div class="card-body">
-          <p class="card-text">${noteText}</p>
-          <div class="btns">
+            <p class="card-text">${noteText}</p>
+            <div class="btns">
                 <button type="button" id="${index}" onclick="delnote(this.id)"
                     class="btn  btn-danger">Delete</button>
                 <button type="button" id="editNote" class="btn  btn-primary" onclick="editYourNote(${index})"
@@ -96,7 +89,6 @@ function addnote(noteText, index) {
         </div>
     </div>
     </div>`;
-
 };
 
 

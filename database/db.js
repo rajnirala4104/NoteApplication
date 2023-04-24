@@ -39,8 +39,6 @@ async function readDataFromTheDataBase(client){
 
 //--------inserting some data--------
 async function insertDataInMyDatabase(client, data){
-    // client.db('userNote').collection('Note').createIndex( { "user_id": 1 }, { unique: true } )
-
     const result = await client.db('userNotes').collection('Note').insertOne(data)
 
     if(result){
