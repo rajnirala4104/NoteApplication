@@ -18,16 +18,17 @@ app.use(express.static(__dirname + '/static'));
 
 //first route
 app.get('/', (req,res)=>{
-    res.status(200).render('layout')
+    readAllTheDataFromTheDataBase(client).then((response => response), (err => err));
+    res.status(200).render('layout', {something : "Raj Nirala"})
 })
 
 
 app.post('/',(req,res)=>{
-    res.status(200).render('layout');
     console.log(req.body.userNote);
     insertDataInMyDatabase(client, {note: req.body.userNote}).then((result)=>{}, (err)=>{
         console.log(err)
     })
+    res.status(200).render('layout');
 })
 
 
